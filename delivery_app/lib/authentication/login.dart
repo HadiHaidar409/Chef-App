@@ -1,13 +1,12 @@
-import 'package:chefs_app/authentication/auth_screen.dart';
-import 'package:chefs_app/global/global.dart';
-import 'package:chefs_app/mainScreens/home_screen.dart';
-import 'package:chefs_app/widgets/custom_text_field.dart';
-import 'package:chefs_app/widgets/error_dialog.dart';
-import 'package:chefs_app/widgets/loading_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:delivery_app/authentication/auth_screen.dart';
+import 'package:delivery_app/mainScreens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import '../global/global.dart';
+import '../widgets/custom_text_field.dart';
+import '../widgets/error_dialog.dart';
+import '../widgets/loading_dialog.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -76,31 +75,31 @@ class _LoginScreenState extends State<LoginScreen>
     });
     if(currentUser != null)
     {
-      readDataAndSetDataLocally(currentUser!);
+      readDataAndSetDataLocally(currentUser!).then((value){
+        Navigator.pop(context);
+
+      });
     }
   }
 
   Future readDataAndSetDataLocally(User currentUser) async
   {
-    await FirebaseFirestore.instance.collection("chef")
+    await FirebaseFirestore.instance.collection("delivery")
         .doc(currentUser.uid)
         .get()
         .then((snapshot) async {
-          if (snapshot.exists)
+          if(snapshot != null || snapshot.exists)
           {
             await sharedPreferences!.setString("uid", currentUser.uid);
-            await sharedPreferences!.setString("email", snapshot.data()!["chefEmail"]);
-            await sharedPreferences!.setString("name", snapshot.data()!["chefName"]);
-            await sharedPreferences!.setString("photoUrl", snapshot.data()!["chefAvatarUrl"]);
+            await sharedPreferences!.setString("email", snapshot.data()!["deliveryEmail"]);
+            await sharedPreferences!.setString("name", snapshot.data()!["deliveryName"]);
+            await sharedPreferences!.setString("photoUrl", snapshot.data()!["deliveryAvatarUrl"]);
 
-            Navigator.pop(context);
             Navigator.push(context, MaterialPageRoute(builder: (c)=> const HomeScreen()));
-
           }
           else
             {
               firebaseAuth.signOut();
-              Navigator.pop(context);
               Navigator.push(context, MaterialPageRoute(builder: (c)=> const AuthScreen()));
               showDialog(
                   context: context,
@@ -112,7 +111,6 @@ class _LoginScreenState extends State<LoginScreen>
                   }
               );
             }
-
     });
   }
 
@@ -127,8 +125,8 @@ class _LoginScreenState extends State<LoginScreen>
             child: Padding(
               padding: EdgeInsets.all(15),
               child: Image.asset(
-                "images/seller.png",
-                height: 270,
+                "images/signup.png",
+                height: 220,
               ),
             ),
           ),
