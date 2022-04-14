@@ -1,8 +1,11 @@
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:users_app/assistantMethods/address_changer.dart';
+import 'package:users_app/assistantMethods/cart_Item_counter.dart';
+import 'package:users_app/assistantMethods/total_amount.dart';
 import 'package:users_app/splashScreen/splash_screen.dart';
+import 'package:provider/provider.dart';
 
 import 'global/global.dart';
 
@@ -23,12 +26,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Users App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (c)=> CartItemCounter()),
+        ChangeNotifierProvider(create: (c)=> TotalAmount()),
+        ChangeNotifierProvider(create: (c)=> AddressChanger()),
+    ],
+      child: MaterialApp(
+        title: 'Users App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const SplashScreen(),
       ),
-      home: const SplashScreen(),
     );
   }
 }

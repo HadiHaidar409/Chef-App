@@ -1,6 +1,12 @@
+
 import 'package:flutter/material.dart';
 import 'package:users_app/authentication/auth_screen.dart';
 import 'package:users_app/global/global.dart';
+import 'package:users_app/mainScreens/address_screen.dart';
+import 'package:users_app/mainScreens/history_screen.dart';
+import 'package:users_app/mainScreens/home_screen.dart';
+import 'package:users_app/mainScreens/my_orders_screen.dart';
+import 'package:users_app/mainScreens/search_screen.dart';
 
 class AppDrawer extends StatelessWidget
 {
@@ -61,7 +67,7 @@ class AppDrawer extends StatelessWidget
                 ),
                 onTap: ()
                   {
-
+                    Navigator.push(context, MaterialPageRoute(builder: (c)=> const HomeScreen()));
                   },
               ),
               ListTile(
@@ -72,7 +78,7 @@ class AppDrawer extends StatelessWidget
                 ),
                 onTap: ()
                 {
-
+                  Navigator.push(context, MaterialPageRoute(builder: (c)=> MyOrdersScreen()));
                 },
               ),
               ListTile(
@@ -83,7 +89,7 @@ class AppDrawer extends StatelessWidget
                 ),
                 onTap: ()
                 {
-
+                  Navigator.push(context, MaterialPageRoute(builder: (c)=> HistoryScreen()));
                 },
               ),
               ListTile(
@@ -94,7 +100,7 @@ class AppDrawer extends StatelessWidget
                 ),
                 onTap: ()
                 {
-
+                  Navigator.push(context, MaterialPageRoute(builder: (c)=> SearchScreen()));
                 },
               ),
               ListTile(
@@ -105,7 +111,7 @@ class AppDrawer extends StatelessWidget
                 ),
                 onTap: ()
                 {
-
+                  Navigator.push(context, MaterialPageRoute(builder: (c)=> AddressScreen()));
                 },
               ),
               ListTile(

@@ -1,0 +1,67 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:users_app/global/global.dart';
+import 'package:users_app/models/items.dart';
+import 'package:users_app/models/menus.dart';
+import 'package:users_app/widgets/app_bar.dart';
+import 'package:users_app/widgets/app_drawer.dart';
+import 'package:users_app/widgets/chef_design.dart';
+import 'package:users_app/widgets/items_design.dart';
+import 'package:users_app/widgets/progress_bar.dart';
+import 'package:users_app/widgets/text_widget.dart';
+
+class ItemsScreen extends StatefulWidget {
+
+
+  final Menus? model;
+  ItemsScreen({this.model});
+
+  @override
+  _ItemsScreenState createState() => _ItemsScreenState();
+}
+
+class _ItemsScreenState extends State<ItemsScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: MyAppBar(chefUID: widget.model!.chefUID),
+      body: CustomScrollView(
+        slivers: [
+          SliverPersistentHeader(pinned: true, delegate: TextWidgetHeader(title: "Items of " + widget.model!.menuTitle.toString())),
+          StreamBuilder<QuerySnapshot>(
+            stream: FirebaseFirestore.instance
+                .collection("chef")
+                .doc(widget.model!.chefUID)
+                .collection("menus")
+                .doc(widget.model!.menuID)
+                .collection("items")
+                .orderBy("publishedDate", descending: true)
+                .snapshots(),
+            builder: (context, snapshot)
+            {
+              return !snapshot.hasData ? SliverToBoxAdapter(
+                child: Center(child: circularProgress(),),)
+                  : SliverStaggeredGrid.countBuilder(
+                crossAxisCount: 1,
+                staggeredTileBuilder: (c) => StaggeredTile.fit(1),
+                itemBuilder: (context, index)
+                {
+                  Items model = Items.fromJson(
+                    snapshot.data!.docs[index].data()! as Map<String, dynamic>,
+                  );
+                  return ItemsDesignWidget(
+                    model: model,
+                    context: context,
+                  );
+                },
+                itemCount: snapshot.data!.docs.length,
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}

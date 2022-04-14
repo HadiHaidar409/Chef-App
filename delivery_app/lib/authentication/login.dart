@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen>
         .doc(currentUser.uid)
         .get()
         .then((snapshot) async {
-          if(snapshot != null || snapshot.exists)
+          if(snapshot.exists)
           {
             await sharedPreferences!.setString("uid", currentUser.uid);
             await sharedPreferences!.setString("email", snapshot.data()!["deliveryEmail"]);

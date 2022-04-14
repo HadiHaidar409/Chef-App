@@ -43,6 +43,13 @@ dependencies:
   geolocator: ^8.2.0
   geocoding: ^2.0.4
   shared_preferences: ^2.0.13
+  carousel_slider: ^4.0.0
+  flutter_staggered_grid_view: ^0.4.1
+  number_inc_dec: ^0.8.0
+  fluttertoast: ^8.0.9
+  provider: ^6.0.2
+  url_launcher: ^6.0.20
+
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +76,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/
+    - slider/
 
   fonts:
     - family: Acme
