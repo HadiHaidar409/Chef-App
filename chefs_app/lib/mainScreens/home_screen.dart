@@ -1,6 +1,7 @@
 import 'package:chefs_app/authentication/auth_screen.dart';
 import 'package:chefs_app/global/global.dart';
 import 'package:chefs_app/model/menus.dart';
+import 'package:chefs_app/splashScreen/splash_screen.dart';
 import 'package:chefs_app/uploadScreens/menu_upload.dart';
 import 'package:chefs_app/widgets/app_drawer.dart';
 import 'package:chefs_app/widgets/info_design.dart';
@@ -9,6 +10,7 @@ import 'package:chefs_app/widgets/text_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -17,7 +19,34 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+{
+
+  restrictBlockedUsersFromUsingApp() async
+  {
+    await FirebaseFirestore.instance.collection("chef")
+        .doc(firebaseAuth.currentUser!.uid)
+        .get().then((snapshot)
+    {
+      if (snapshot.data()!["status"] != "approved")
+      {
+        Fluttertoast.showToast(msg: "This account has been blocked, please contact the Admin");
+
+        firebaseAuth.signOut();
+        Navigator.push(context, MaterialPageRoute(builder: (c) => SplashScreen()));
+      }
+    });
+  }
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    restrictBlockedUsersFromUsingApp();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -3,6 +3,7 @@ import 'package:delivery_app/authentication/auth_screen.dart';
 import 'package:delivery_app/mainScreens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../global/global.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/error_dialog.dart';
@@ -90,16 +91,28 @@ class _LoginScreenState extends State<LoginScreen>
         .then((snapshot) async {
           if(snapshot.exists)
           {
-            await sharedPreferences!.setString("uid", currentUser.uid);
-            await sharedPreferences!.setString("email", snapshot.data()!["deliveryEmail"]);
-            await sharedPreferences!.setString("name", snapshot.data()!["deliveryName"]);
-            await sharedPreferences!.setString("photoUrl", snapshot.data()!["deliveryAvatarUrl"]);
+            if (snapshot.data()!["status"] == "approved")
+              {
+                await sharedPreferences!.setString("uid", currentUser.uid);
+                await sharedPreferences!.setString("email", snapshot.data()!["deliveryEmail"]);
+                await sharedPreferences!.setString("name", snapshot.data()!["deliveryName"]);
+                await sharedPreferences!.setString("photoUrl", snapshot.data()!["deliveryAvatarUrl"]);
 
-            Navigator.push(context, MaterialPageRoute(builder: (c)=> const HomeScreen()));
+                Navigator.pop(context);
+                Navigator.push(context, MaterialPageRoute(builder: (c)=> const HomeScreen()));
+              }
+            else
+              {
+                firebaseAuth.signOut();
+                Navigator.pop(context);
+                Fluttertoast.showToast(msg: "This account is blocked, please contact the Admin");
+              }
+
           }
           else
             {
               firebaseAuth.signOut();
+              Navigator.pop(context);
               Navigator.push(context, MaterialPageRoute(builder: (c)=> const AuthScreen()));
               showDialog(
                   context: context,

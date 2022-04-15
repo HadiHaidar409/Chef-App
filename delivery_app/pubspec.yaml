@@ -44,6 +44,7 @@ dependencies:
   geocoding: ^2.0.4
   shared_preferences: ^2.0.13
   url_launcher: ^6.0.20
+  fluttertoast: ^8.0.9
 
 
 dev_dependencies:

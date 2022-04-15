@@ -7,6 +7,7 @@ import 'package:chefs_app/widgets/loading_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -88,13 +89,22 @@ class _LoginScreenState extends State<LoginScreen>
         .then((snapshot) async {
           if (snapshot.exists)
           {
-            await sharedPreferences!.setString("uid", currentUser.uid);
-            await sharedPreferences!.setString("email", snapshot.data()!["chefEmail"]);
-            await sharedPreferences!.setString("name", snapshot.data()!["chefName"]);
-            await sharedPreferences!.setString("photoUrl", snapshot.data()!["chefAvatarUrl"]);
+            if(snapshot.data()!["status"] == "approved")
+              {
+                await sharedPreferences!.setString("uid", currentUser.uid);
+                await sharedPreferences!.setString("email", snapshot.data()!["chefEmail"]);
+                await sharedPreferences!.setString("name", snapshot.data()!["chefName"]);
+                await sharedPreferences!.setString("photoUrl", snapshot.data()!["chefAvatarUrl"]);
 
-            Navigator.pop(context);
-            Navigator.push(context, MaterialPageRoute(builder: (c)=> const HomeScreen()));
+                Navigator.pop(context);
+                Navigator.push(context, MaterialPageRoute(builder: (c)=> const HomeScreen()));
+              }
+            else
+              {
+                firebaseAuth.signOut();
+                Navigator.pop(context);
+                Fluttertoast.showToast(msg: "This account has been blocked, please contact the Admin");
+            }
 
           }
           else

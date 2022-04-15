@@ -3,10 +3,13 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:users_app/assistantMethods/assistant_methods.dart';
 import 'package:users_app/authentication/auth_screen.dart';
+import 'package:users_app/authentication/login.dart';
 import 'package:users_app/global/global.dart';
 import 'package:users_app/models/chef.dart';
+import 'package:users_app/splashScreen/splash_screen.dart';
 import 'package:users_app/widgets/app_drawer.dart';
 import 'package:users_app/widgets/chef_design.dart';
 import 'package:users_app/widgets/progress_bar.dart';
@@ -51,11 +54,32 @@ class _HomeScreenState extends State<HomeScreen> {
     "slider/27.jpg",
   ];
 
+
+  restrictBlockedUsersFromUsingApp() async
+  {
+    await FirebaseFirestore.instance.collection("user")
+        .doc(firebaseAuth.currentUser!.uid)
+        .get().then((snapshot)
+    {
+      if (snapshot.data()!["status"] != "approved")
+        {
+          Fluttertoast.showToast(msg: "This account has been blocked, please contact the Admin");
+
+          firebaseAuth.signOut();
+          Navigator.push(context, MaterialPageRoute(builder: (c) => SplashScreen()));
+        }
+      else
+        {
+        clearCartNow(context);
+      }
+    });
+  }
+
   @override
   void initState() {
     super.initState();
 
-    clearCartNow(context);
+    restrictBlockedUsersFromUsingApp();
   }
 
   @override

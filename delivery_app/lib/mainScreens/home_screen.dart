@@ -7,7 +7,9 @@ import 'package:delivery_app/mainScreens/history_screen.dart';
 import 'package:delivery_app/mainScreens/new_orders_screen.dart';
 import 'package:delivery_app/mainScreens/not_yet_delivered_screen.dart';
 import 'package:delivery_app/mainScreens/parcel_in_progress_screen.dart';
+import 'package:delivery_app/splashScreen/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../global/global.dart';
 
@@ -117,14 +119,34 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+
+  restrictBlockedUsersFromUsingApp() async
+  {
+    await FirebaseFirestore.instance.collection("delivery")
+        .doc(firebaseAuth.currentUser!.uid)
+        .get().then((snapshot)
+    {
+      if (snapshot.data()!["status"] != "approved")
+      {
+        Fluttertoast.showToast(msg: "This account has been blocked, please contact the Admin");
+
+        firebaseAuth.signOut();
+        Navigator.push(context, MaterialPageRoute(builder: (c) => MySplashScreen()));
+      }
+      else
+      {
+        UserLocation uLocation = UserLocation();
+        uLocation.getCurrentLocation();
+        getPerParcelDeliveryAmount();
+        getRiderPreviousEarnings();
+      }
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-
-    UserLocation uLocation = UserLocation();
-    uLocation.getCurrentLocation();
-    getPerParcelDeliveryAmount();
-    getRiderPreviousEarnings();
+    restrictBlockedUsersFromUsingApp();
   }
 
 
