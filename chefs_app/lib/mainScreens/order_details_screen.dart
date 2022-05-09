@@ -80,7 +80,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "€  " + dataMap["totalAmount"].toString(),
+                              "£ " + dataMap["totalAmount"].toString(),
                               style: const TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
@@ -106,7 +106,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                         ),
                         const Divider(thickness: 4,),
                         orderStatus != "ended"
-                            ? Image.asset("images/packing.png")
+                            ? Image.asset("images/pack.jpg")
                             : Image.asset("images/delivered.jpg"),
                         const Divider(thickness: 4,),
                         FutureBuilder<DocumentSnapshot>(

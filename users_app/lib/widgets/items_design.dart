@@ -48,15 +48,14 @@ class _ItemsDesignWidgetState extends State<ItemsDesignWidget> {
                     widget.model!.title!,
                 style: const TextStyle(
                   color: Colors.cyan,
-                  fontSize: 20,
-                  fontFamily: "Train",
+                  fontSize: 25,
                 ),
               ),
               Text(
                 widget.model!.shortInfo!,
                 style: const TextStyle(
                   color: Colors.grey,
-                  fontSize: 12,
+                  fontSize: 15,
                 ),
               ),
               Divider(

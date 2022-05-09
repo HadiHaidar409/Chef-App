@@ -138,8 +138,8 @@ class _LoginScreenState extends State<LoginScreen>
             child: Padding(
               padding: EdgeInsets.all(15),
               child: Image.asset(
-                "images/signup.png",
-                height: 220,
+                "images/Driver.png",
+                height: 200,
               ),
             ),
           ),

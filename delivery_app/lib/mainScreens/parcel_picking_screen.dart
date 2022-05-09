@@ -100,7 +100,7 @@ class _ParcelPickingScreenState extends State<ParcelPickingScreen>
               children: [
 
                 Image.asset(
-                  'images/restaurant.png',
+                  'images/loaction2.png',
                   width: 50,
                 ),
 
@@ -111,11 +111,9 @@ class _ParcelPickingScreenState extends State<ParcelPickingScreen>
                     SizedBox(height: 12,),
 
                     Text(
-                      "Show Cafe/Restaurant Location",
+                      "Get Kitchen Location",
                       style: TextStyle(
-                        fontFamily: "Signatra",
                         fontSize: 18,
-                        letterSpacing: 2,
                       ),
                     ),
                   ],
@@ -150,8 +148,8 @@ class _ParcelPickingScreenState extends State<ParcelPickingScreen>
                   decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Colors.cyan,
-                          Colors.amber,
+                          Colors.blue,
+                          Colors.blue,
                         ],
                         begin:  FractionalOffset(0.0, 0.0),
                         end:  FractionalOffset(1.0, 0.0),

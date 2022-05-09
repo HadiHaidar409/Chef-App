@@ -103,12 +103,10 @@ class _LoginScreenState extends State<LoginScreen>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
-                  //image
-                  Image.asset(
-                      "images/admin.png"
+                  Container(
+                    child: Text("Admin Login", style: TextStyle(color: Colors.white, fontSize: 50)),
                   ),
-
+                  const SizedBox(height: 100,),
                   //email text field
                   TextField(
                     onChanged: (value)

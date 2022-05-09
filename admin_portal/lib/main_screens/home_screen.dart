@@ -111,12 +111,12 @@ class _HomeScreenState extends State<HomeScreen>
               children: [
                 //active
                 ElevatedButton.icon(
-                  icon: const Icon(Icons.person_add, color: Colors.white,),
+                  icon: const Icon(Icons.person_add, color: Colors.black,),
                   label: Text(
                     "Verified Users".toUpperCase(),
                     style: const TextStyle(
                       fontSize: 16,
-                      color: Colors.white,
+                      color: Colors.black,
                       letterSpacing: 3,
                     ),
                   ),
@@ -134,12 +134,12 @@ class _HomeScreenState extends State<HomeScreen>
 
                 //block
                 ElevatedButton.icon(
-                  icon: const Icon(Icons.block_flipped, color: Colors.white,),
+                  icon: const Icon(Icons.block_flipped, color: Colors.black,),
                   label: Text(
                     "Blocked Users".toUpperCase(),
                     style: const TextStyle(
                       fontSize: 16,
-                      color: Colors.white,
+                      color: Colors.black,
                       letterSpacing: 3,
                     ),
                   ),
@@ -161,12 +161,12 @@ class _HomeScreenState extends State<HomeScreen>
               children: [
                 //active
                 ElevatedButton.icon(
-                  icon: const Icon(Icons.person_add, color: Colors.white,),
+                  icon: const Icon(Icons.person_add, color: Colors.black,),
                   label: Text(
                     "Verified Chefs".toUpperCase(),
                     style: const TextStyle(
                       fontSize: 16,
-                      color: Colors.white,
+                      color: Colors.black,
                       letterSpacing: 3,
                     ),
                   ),
@@ -184,12 +184,12 @@ class _HomeScreenState extends State<HomeScreen>
 
                 //block
                 ElevatedButton.icon(
-                  icon: const Icon(Icons.block_flipped, color: Colors.white,),
+                  icon: const Icon(Icons.block_flipped, color: Colors.black,),
                   label: Text(
                     "Blocked Chefs".toUpperCase(),
                     style: const TextStyle(
                       fontSize: 16,
-                      color: Colors.white,
+                      color: Colors.black,
                       letterSpacing: 3,
                     ),
                   ),
@@ -211,12 +211,12 @@ class _HomeScreenState extends State<HomeScreen>
               children: [
                 //active
                 ElevatedButton.icon(
-                  icon: const Icon(Icons.person_add, color: Colors.white,),
+                  icon: const Icon(Icons.person_add, color: Colors.black,),
                   label: Text(
                     "Verified Drivers".toUpperCase(),
                     style: const TextStyle(
                       fontSize: 16,
-                      color: Colors.white,
+                      color: Colors.black,
                       letterSpacing: 3,
                     ),
                   ),
@@ -234,12 +234,12 @@ class _HomeScreenState extends State<HomeScreen>
 
                 //block
                 ElevatedButton.icon(
-                  icon: const Icon(Icons.block_flipped, color: Colors.white,),
+                  icon: const Icon(Icons.block_flipped, color: Colors.black,),
                   label: Text(
                     "Blocked Drivers".toUpperCase(),
                     style: const TextStyle(
                       fontSize: 16,
-                      color: Colors.white,
+                      color: Colors.black,
                       letterSpacing: 3,
                     ),
                   ),
@@ -257,18 +257,18 @@ class _HomeScreenState extends State<HomeScreen>
 
             //logout button
             ElevatedButton.icon(
-              icon: const Icon(Icons.logout, color: Colors.white,),
+              icon: const Icon(Icons.logout, color: Colors.black,),
               label: Text(
                 "Logout".toUpperCase(),
                 style: const TextStyle(
                   fontSize: 16,
-                  color: Colors.white,
+                  color: Colors.black,
                   letterSpacing: 3,
                 ),
               ),
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.all(40),
-                primary: Colors.amber,
+                primary: Colors.grey,
               ),
               onPressed: ()
               {FirebaseAuth.instance.signOut();

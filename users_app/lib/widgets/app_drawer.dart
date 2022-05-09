@@ -22,27 +22,21 @@ class AppDrawer extends StatelessWidget
             padding: const EdgeInsets.only(top:25, bottom: 10),
             child: Column(
               children: [
-                Material(
-                 borderRadius: const BorderRadius.all(Radius.circular(80)),
-                 elevation: 10,
+                Container(
+                  alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: const EdgeInsets.all(1.0),
-                    child: Container(
-                      height: 160,
-                      width: 160,
-                      child: CircleAvatar(
-                        backgroundImage: NetworkImage(
-                        sharedPreferences!.getString("photoUrl")!
-                        ),
-                      ),
+                    padding: EdgeInsets.all(15),
+                    child: Image.asset(
+                      "images/logo.png",
+                      height: 100,
                     ),
                   ),
                 ),
                 const SizedBox(height: 10,),
-                Text(
+                Text( "Welcome " +
                     sharedPreferences!.getString("name")!,
-                  style: TextStyle(color: Colors.black, fontSize: 20, fontFamily: "Train"),
-                )
+                  style: TextStyle(color: Colors.black, fontSize: 20),
+                ),
               ],
             ),
           ),

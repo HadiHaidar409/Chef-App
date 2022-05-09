@@ -168,7 +168,7 @@ class _ItemsUploadScreenState extends State<ItemsUploadScreen>
         ),
         title: const Text(
           "Uploading New Item",
-          style: TextStyle(fontSize: 20, fontFamily: "Lobster"),
+          style: TextStyle(fontSize: 20),
         ),
         centerTitle: true,
         automaticallyImplyLeading: true,
@@ -187,8 +187,6 @@ class _ItemsUploadScreenState extends State<ItemsUploadScreen>
                 color: Colors.yellowAccent,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
-                fontFamily: "Varela",
-                letterSpacing: 3,
               ),
             ),
             onPressed: uploading ? null : ()=> validateUploadForm(),

@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
         flexibleSpace: Container(
         ),
         title: Text(
-         "Food",
+         "Foodiesty",
         ),
         centerTitle: true,
         automaticallyImplyLeading: true,

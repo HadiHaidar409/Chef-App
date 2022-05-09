@@ -32,8 +32,7 @@ class _MyAppBarState extends State<MyAppBar>
         },
       ),
       title: const Text(
-        "Food",
-        style: TextStyle(fontSize: 45, fontFamily: "Signatra"),
+        "Foodiesty",
       ),
       centerTitle: true,
       automaticallyImplyLeading: true,
@@ -41,7 +40,7 @@ class _MyAppBarState extends State<MyAppBar>
         Stack(
           children: [
             IconButton(
-              icon: const Icon(Icons.shopping_cart, color: Colors.cyan,),
+              icon: const Icon(Icons.shopping_cart, color: Colors.black,),
               onPressed: ()
               {
                 //send user to cart screen

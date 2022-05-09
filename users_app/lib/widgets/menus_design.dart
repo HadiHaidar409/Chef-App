@@ -45,19 +45,17 @@ class _MenusDesignWidgetState extends State<MenusDesignWidget> {
               ),
               const SizedBox(height: 1.0,),
               Text(
-                "Chef Name: " +
                     widget.model!.menuTitle!,
                 style: const TextStyle(
                   color: Colors.cyan,
-                  fontSize: 20,
-                  fontFamily: "Train",
+                  fontSize: 25,
                 ),
               ),
               Text(
                 widget.model!.menuInfo!,
                 style: const TextStyle(
                   color: Colors.grey,
-                  fontSize: 12,
+                  fontSize: 15,
                 ),
               ),
               Divider(

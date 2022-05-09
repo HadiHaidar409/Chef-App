@@ -40,7 +40,7 @@ class _MenusScreenState extends State<MenusScreen> {
           },
         ),
         title: Text(
-          "Food",
+          "Foodiesty",
         ),
         centerTitle: true,
         automaticallyImplyLeading: true,

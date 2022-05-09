@@ -90,12 +90,12 @@ class _PlacedOrderScreenState extends State<PlacedOrderScreen>
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
 
-            Image.asset("images/delivery.jpg"),
+            Image.asset("images/Driver.png"),
 
             const SizedBox(height: 12,),
 
             ElevatedButton(
-              child: const Text("Place Order"),
+              child: const Text("Place Order", ),
               style: ElevatedButton.styleFrom(
                 primary: Colors.cyan,
               ),

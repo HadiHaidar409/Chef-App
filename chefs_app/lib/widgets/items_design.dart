@@ -42,7 +42,6 @@ class _ItemsDesignWidgetState extends State<ItemsDesignWidget> {
                 style: const TextStyle(
                   color: Colors.cyan,
                   fontSize: 18,
-                  fontFamily: "Train",
                 ),
               ),
               const SizedBox(height: 2,),

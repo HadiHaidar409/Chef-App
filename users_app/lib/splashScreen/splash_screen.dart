@@ -56,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen>
             children: [
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Image.asset("images/welcome.png"),
+                child: Image.asset("images/logo.png"),
               ),
               const SizedBox(height: 10,),
               const Padding(
@@ -67,8 +67,6 @@ class _SplashScreenState extends State<SplashScreen>
                   style: TextStyle(
                     color: Colors.black54,
                     fontSize: 40,
-                    fontFamily: "Train",
-                    letterSpacing: 3,
                   ),
                 ),
               ),

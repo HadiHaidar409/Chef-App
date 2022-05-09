@@ -30,13 +30,13 @@ class _ItemsScreenState extends State<ItemsScreen> {
         ),
         title: Text(
           sharedPreferences!.getString("name")!,
-          style: const TextStyle(fontSize: 30, fontFamily: "Lobster"),
+          style: const TextStyle(fontSize: 30),
         ),
         centerTitle: true,
         automaticallyImplyLeading: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.library_add, color: Colors.cyan,),
+            icon: const Icon(Icons.library_add, color: Colors.white,),
             onPressed: ()
             {
               Navigator.push(context, MaterialPageRoute(builder: (c)=> ItemsUploadScreen(model: widget.model)));

@@ -53,7 +53,7 @@ class _MySplashScreenState extends State<MySplashScreen>
 
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Image.asset("images/logo.png"),
+                child: Image.asset("images/Driver.png"),
               ),
 
               const SizedBox(height: 10,),
@@ -66,7 +66,6 @@ class _MySplashScreenState extends State<MySplashScreen>
                   style: TextStyle(
                     color: Colors.black54,
                     fontSize: 24,
-                    fontFamily: "Signatra",
                     letterSpacing: 2,
                   ),
                 ),

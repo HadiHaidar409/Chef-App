@@ -43,19 +43,17 @@ class _ChefDesignWidgetState extends State<ChefDesignWidget> {
               ),
               const SizedBox(height: 1.0,),
               Text(
-                "Chef Name: " +
                 widget.model!.chefName!,
                 style: const TextStyle(
                   color: Colors.cyan,
-                  fontSize: 20,
-                  fontFamily: "Train",
+                  fontSize: 25,
                 ),
               ),
               Text(
                 widget.model!.chefEmail!,
                 style: const TextStyle(
                   color: Colors.grey,
-                  fontSize: 12,
+                  fontSize: 15,
                 ),
               ),
               Divider(

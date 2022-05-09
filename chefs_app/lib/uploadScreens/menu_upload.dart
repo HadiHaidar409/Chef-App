@@ -163,7 +163,7 @@ class _MenusUploadScreenState extends State<MenusUploadScreen>
         ),
         title: const Text(
           "Uploading New Menu",
-          style: TextStyle(fontSize: 20, fontFamily: "Lobster"),
+          style: TextStyle(fontSize: 20),
         ),
         centerTitle: true,
         automaticallyImplyLeading: true,
@@ -182,8 +182,6 @@ class _MenusUploadScreenState extends State<MenusUploadScreen>
                 color: Colors.yellowAccent,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
-                fontFamily: "Varela",
-                letterSpacing: 3,
               ),
             ),
             onPressed: uploading ? null : ()=> validateUploadForm(),

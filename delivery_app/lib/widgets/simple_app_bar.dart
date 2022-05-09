@@ -19,22 +19,11 @@ class SimpleAppBar extends StatelessWidget with PreferredSizeWidget
         color: Colors.white,
       ),
       flexibleSpace: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              colors: [
-                Colors.cyan,
-                Colors.amber,
-              ],
-              begin: FractionalOffset(0.0, 0.0),
-              end: FractionalOffset(1.0, 0.0),
-              stops: [0.0, 1.0],
-              tileMode: TileMode.clamp),
-        ),
       ),
       centerTitle: true,
       title: Text(
         title!,
-        style: const TextStyle(fontSize: 45.0, letterSpacing: 3, color: Colors.white, fontFamily: "Signatra"),
+        style: const TextStyle(fontSize: 30.0, color: Colors.white),
       ),
     );
   }

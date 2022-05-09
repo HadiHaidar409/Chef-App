@@ -20,11 +20,10 @@ class _AuthScreenState extends State<AuthScreen> {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             title: const Text(
-                "Food",
+                "Foodiesty",
               style: TextStyle(
-                fontSize: 50,
+                fontSize: 30,
                 color: Colors.white,
-                fontFamily: "Train",
               ),
             ),
             centerTitle: true,

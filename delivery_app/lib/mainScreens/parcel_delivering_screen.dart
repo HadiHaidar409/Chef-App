@@ -148,7 +148,7 @@ class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen>
               children: [
 
                 Image.asset(
-                  'images/restaurant.png',
+                  'images/loaction2.png',
                   width: 50,
                 ),
 
@@ -199,8 +199,8 @@ class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen>
                   decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Colors.cyan,
-                          Colors.amber,
+                          Colors.blue,
+                          Colors.blue,
                         ],
                         begin:  FractionalOffset(0.0, 0.0),
                         end:  FractionalOffset(1.0, 0.0),

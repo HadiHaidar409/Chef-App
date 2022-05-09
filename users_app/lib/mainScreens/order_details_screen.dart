@@ -91,7 +91,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                         const Divider(thickness: 4,),
                         orderStatus == "ended"
                             ? Image.asset("images/delivered.jpg")
-                            : Image.asset("images/state.jpg"),
+                            : Image.asset("images/Driver.png"),
                         const Divider(thickness: 4,),
                         FutureBuilder<DocumentSnapshot>(
                           future: FirebaseFirestore.instance
